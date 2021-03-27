@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ChatUI.ViewModels"
+             x:Class="ChatUI.Views.ChatsPage"
+             Style="{StaticResource page-style}">
+    <ContentPage.BindingContext>
+        <viewmodels:ChatsPageViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="auto, *" Margin="20, 30">
+        <StackLayout Spacing="20">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Chats" FontAttributes="Bold" FontSize="32" TextColor="Black"/>
+                <Label Text="&#xf002;" FontSize="24" FontFamily="fas" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Frame HasShadow="False" HorizontalOptions="CenterAndExpand" Padding="20, 7" BackgroundColor="#5b61b9" CornerRadius="20">
+                    <Label Text="Recent Messages" FontSize="18" TextColor="White" VerticalOptions="Center"/>
+
+                </Frame>
+                <Frame HasShadow="False" HorizontalOptions="CenterAndExpand" Padding="20, 7" BackgroundColor="#f7f7f7" CornerRadius="20">
+                    <Label Text="Online" FontSize="18" TextColor="#8f8f8f" VerticalOptions="Center"/>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+
+        <CollectionView ItemsSource="{Binding Users}" Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout HorizontalOptions="Start">
+                        <Image Source="{Binding AvatarUrl}"
+                               WidthRequest="150"
+                               HeightRequest="150"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               BackgroundColor="Black">
+                            <Image.Clip>
+                                <EllipseGeometry
+                                    Center="75,75"
+                                    RadiusX="75"
+                                    RadiusY="75"/>
+                            </Image.Clip>
+                        </Image>
+
+                    </StackLayout>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

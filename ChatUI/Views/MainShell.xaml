@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:ChatUI.Views"
+       x:Class="ChatUI.Views.MainShell">
+    <TabBar>
+        <Tab Title="Chats">
+            <Tab.Icon>
+                <FontImageSource Glyph="&#xf075;" Color="Black" FontFamily="fas"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:ChatsPage}" />
+        </Tab>
+        <Tab Title="People">
+            <Tab.Icon>
+                <FontImageSource Glyph="&#xf500;" Color="Black" FontFamily="fas"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:PeoplePage}" />
+        </Tab>
+        <Tab Title="Calls">
+            <Tab.Icon>
+                <FontImageSource Glyph="&#xf879;" Color="Black" FontFamily="fas"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:PeoplePage}" />
+        </Tab>
+        <Tab Title="Profile">
+            <Tab.Icon>
+                <FontImageSource Glyph="&#xf007;" Color="Black" FontFamily="fas"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:PeoplePage}" />
+        </Tab>
+    </TabBar>
+</Shell>
