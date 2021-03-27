@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Threading.Tasks;
+using ChatUI.Models;
 using Xamarin.Forms;
 
 namespace ChatUI.Views
@@ -10,6 +11,12 @@ namespace ChatUI.Views
         public ChatsPage()
         {
             InitializeComponent();
+        }
+
+        async void CollectionView_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        {
+            var user = e.CurrentSelection[0] as User;
+            await Shell.Current.GoToAsync("//chatroom"); ;
         }
     }
 }

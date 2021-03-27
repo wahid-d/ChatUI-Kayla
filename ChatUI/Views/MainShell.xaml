@@ -29,4 +29,6 @@
             <ShellContent ContentTemplate="{DataTemplate views:PeoplePage}" />
         </Tab>
     </TabBar>
+
+    <ShellContent ContentTemplate="{DataTemplate views:ChatRoom}" Route="chatroom"/>
 </Shell>

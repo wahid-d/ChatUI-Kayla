@@ -2,11 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:ChatUI.ViewModels"
+             xmlns:converters="clr-namespace:ChatUI.Tools.Converters"
              x:Class="ChatUI.Views.ChatsPage"
              Style="{StaticResource page-style}">
     <ContentPage.BindingContext>
         <viewmodels:ChatsPageViewModel />
     </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <converters:LastSeenToRelativeConverter x:Key="lastseen-relative-converter"/>
+    </ContentPage.Resources>
 
     <Grid RowDefinitions="auto, *" Margin="20, 30">
         <StackLayout Spacing="20">
@@ -25,24 +30,13 @@
             </StackLayout>
         </StackLayout>
 
-        <CollectionView ItemsSource="{Binding Users}" Grid.Row="1">
+        <CollectionView ItemsSource="{Binding Users}" Grid.Row="1"
+                        SelectionChanged="CollectionView_SelectionChanged"
+                        SelectionMode="Single">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout HorizontalOptions="Start">
-                        <Image Source="{Binding AvatarUrl}"
-                               WidthRequest="150"
-                               HeightRequest="150"
-                               HorizontalOptions="Center"
-                               VerticalOptions="Center"
-                               BackgroundColor="Black">
-                            <Image.Clip>
-                                <EllipseGeometry
-                                    Center="75,75"
-                                    RadiusX="75"
-                                    RadiusY="75"/>
-                            </Image.Clip>
-                        </Image>
-
+                        <Label Text="{Binding LastSeen, Converter={StaticResource lastseen-relative-converter}}"/>
                     </StackLayout>
 
                 </DataTemplate>

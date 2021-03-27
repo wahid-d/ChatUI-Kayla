@@ -18,7 +18,7 @@ namespace ChatUI.Models
             ID = Guid.NewGuid();
             FirstName = getRandomString(random.Next(5, 13));
             LastName = getRandomString(random.Next(5, 13));
-            LastSeen = DateTime.Now.AddSeconds(random.Next(0, 10000) * -1);
+            LastSeen = DateTime.Now.AddSeconds(random.Next(0, 1000000) * -1);
             AvatarUrl = $"https://i.pravatar.cc/500?img={random.Next(1, 70)}";
         }
 
